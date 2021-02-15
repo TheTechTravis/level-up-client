@@ -4,7 +4,9 @@ import { useHistory } from 'react-router-dom'
 
 
 export const GameForm = () => {
+
     const history = useHistory()
+
     const { createGame, getGameTypes, gameTypes } = useContext(GameContext)
 
     /*
@@ -17,7 +19,7 @@ export const GameForm = () => {
         gameTypeId: 0,
         numberOfPlayers: 0,
         gamerId: "",
-        description: "",
+        description: ""
     })
 
     /*
@@ -110,7 +112,7 @@ export const GameForm = () => {
                     // Prevent form from being submitted
                     evt.preventDefault()
 
-                    const game = {
+                    const newGame = {
                         title: currentGame.title,
                         gameTypeId: +(currentGame.gameTypeId),
                         numberOfPlayers: +(currentGame.numberOfPlayers),
@@ -119,7 +121,7 @@ export const GameForm = () => {
                     }
 
                     // Send POST request to your API
-                    createGame(game)
+                    createGame(newGame)
                         .then(() => history.push("/"))
                 }}
                 className="btn btn-2 btn-sep icon-create"> Create </button>

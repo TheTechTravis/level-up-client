@@ -17,14 +17,14 @@ export const GameProvider = (props) => {
             .then(setGames)
     }
 
-    const createGame = (game) => {
+    const createGame = (newGame) => {
         return fetch("http://localhost:8000/games", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
             },
-            body: JSON.stringify(game)
+            body: JSON.stringify(newGame)
         })
             .then(getGames)
     }
@@ -37,7 +37,7 @@ export const GameProvider = (props) => {
             }
         })
             .then(response => response.json())
-            .then()
+            .then(setTypes)
     }
 
     return (
